@@ -1,10 +1,28 @@
+import { createAction } from "@reduxjs/toolkit";
 import type { NextPage } from "next";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { counterSlice, useAppDispatch, useAppSelector } from "../store/store";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  const count = useSelector((state) => console.log(state));
-  return <div className={styles.container}></div>;
+  const count = useAppSelector((state) => state);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      dispatch(counterSlice.actions.increment());
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  return (
+    <div className={styles.container}>
+      <p>{count.value}</p>
+    </div>
+  );
 };
 
 export default Home;
