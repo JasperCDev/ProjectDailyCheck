@@ -8,16 +8,6 @@ const Home: NextPage = () => {
   const count = useAppSelector((state) => state);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      dispatch(counterSlice.actions.increment());
-    }, 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
   return (
     <div className={styles.container}>
       <p>{count.value}</p>
