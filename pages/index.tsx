@@ -1,16 +1,20 @@
 import { createAction } from "@reduxjs/toolkit";
 import type { NextPage } from "next";
 import { useEffect } from "react";
-import { counterSlice, useAppDispatch, useAppSelector } from "../store/store";
+import { todosSlice, useAppDispatch, useAppSelector } from "../store/store";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  const count = useAppSelector((state) => state);
+  const todos = useAppSelector((state) => state);
   const dispatch = useAppDispatch();
 
   return (
     <div className={styles.container}>
-      <p>{count.value}</p>
+      <ul>
+        {todos.todos.map((todo) => {
+          return <li key={todo.id}>{todo.title}</li>;
+        })}
+      </ul>
     </div>
   );
 };
