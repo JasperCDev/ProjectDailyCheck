@@ -7,14 +7,17 @@ const initialTodos = {
     {
       title: "Visit Bank",
       id: 1,
+      completed: false,
     },
     {
       title: "Choose Investments",
       id: 2,
+      completed: false,
     },
     {
       title: "Review Assets",
       id: 3,
+      completed: false,
     },
   ],
 };
