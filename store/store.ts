@@ -28,7 +28,23 @@ export const todosSlice = createSlice({
   reducers: {},
 });
 
-const store = configureStore({ reducer: todosSlice.reducer });
+const initialBalance = {
+  balance: 10000,
+};
+
+const balanceSlice = createSlice({
+  name: "balance",
+  initialState: initialTodos,
+  reducers: {
+    updateBalance: (state, action) => {
+      state += action.payload;
+    },
+  },
+});
+
+const store = configureStore({
+  reducer: { todos: todosSlice.reducer, balance: balanceSlice.reducer },
+});
 
 export default store;
 
