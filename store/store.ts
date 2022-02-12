@@ -34,7 +34,7 @@ const initialBalance = {
 
 const balanceSlice = createSlice({
   name: "balance",
-  initialState: initialTodos,
+  initialState: initialBalance,
   reducers: {
     updateBalance: (state, action) => {
       state += action.payload;
