@@ -5,7 +5,11 @@ interface Props {}
 
 const Header = (props: Props) => {
   const state = useAppSelector((state) => state);
-  return <header>Balance: {state.balance.balance}</header>;
+  return (
+    <header style={{ backgroundColor: "lightblue" }}>
+      Balance: {state.balance.balance}
+    </header>
+  );
 };
 
 export default Header;
