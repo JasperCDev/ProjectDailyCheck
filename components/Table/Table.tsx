@@ -1,5 +1,4 @@
 import React from "react";
-import { useRouter } from "next/router";
 import {
   useTable,
   TableOptions,
@@ -34,36 +33,14 @@ interface Props<T extends object> extends TableOptions<T> {
   mobileOrg?: boolean;
 }
 
-function Table<T extends object>({
-  data,
-  columns,
-  className,
-  headingClassName,
-  bodyClassName,
-  filterable,
-  filters,
-  renderRowSubComponent,
-  defaultColumnSortId,
-  sortDesc,
-  wallets,
-  mobileOrg,
-}: Props<T>) {
+function Table<T extends object>({ data, columns, bodyClassName }: Props<T>) {
   const instance = useTable({
     columns,
     data,
   });
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-    state,
-    visibleColumns,
-  } = instance;
-
-  const router = useRouter();
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    instance;
 
   return (
     <table {...getTableProps()}>
