@@ -22,13 +22,44 @@ const initialTodos = {
   ],
 };
 
-export const todosSlice = createSlice({
+const initialBalance = 10000;
+
+const initialBudget = [
+  {
+    amount: 4000,
+    name: "Income",
+  },
+  {
+    amount: -2000,
+    name: "Rent",
+  },
+  {
+    amount: -500,
+    name: "Car",
+  },
+  {
+    amount: -500,
+    name: "Food",
+  },
+  {
+    amount: -200,
+    name: "Car Insurance",
+  },
+  {
+    amount: -500,
+    name: "Health Insurance",
+  },
+  {
+    amount: -100,
+    name: "Electricity",
+  },
+];
+
+const todosSlice = createSlice({
   name: "todos",
   initialState: initialTodos,
   reducers: {},
 });
-
-const initialBalance = 1000;
 
 const balanceSlice = createSlice({
   name: "balance",
@@ -40,8 +71,18 @@ const balanceSlice = createSlice({
   },
 });
 
+const budgetSlice = createSlice({
+  name: "budget",
+  initialState: initialBudget,
+  reducers: {},
+});
+
 const store = configureStore({
-  reducer: { todos: todosSlice.reducer, balance: balanceSlice.reducer },
+  reducer: {
+    todos: todosSlice.reducer,
+    balance: balanceSlice.reducer,
+    budget: budgetSlice.reducer,
+  },
 });
 
 export default store;
