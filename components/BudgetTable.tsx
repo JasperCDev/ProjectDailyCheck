@@ -18,6 +18,7 @@ const BudgetTable = (props: Props) => {
           const row = cell.row.original;
           return row.name;
         },
+        Footer: () => "Total: ",
       },
       {
         header: "Amount",
