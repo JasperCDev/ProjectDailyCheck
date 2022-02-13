@@ -7,7 +7,6 @@ import {
   ColumnInstance,
   IdType,
 } from "react-table";
-import styles from "./Table.module.scss";
 
 interface Props<T extends object> extends TableOptions<T> {
   className?: string;
@@ -53,10 +52,7 @@ function Table<T extends object>({ data, columns, bodyClassName }: Props<T>) {
           </tr>
         ))}
       </thead>
-      <tbody
-        className={styles.table__body + " " + bodyClassName}
-        {...getTableBodyProps()}
-      >
+      <tbody {...getTableBodyProps()}>
         {rows.map((row) => {
           prepareRow(row);
           return (
