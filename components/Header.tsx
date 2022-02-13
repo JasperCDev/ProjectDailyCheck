@@ -7,7 +7,7 @@ const Header = (props: Props) => {
   const state = useAppSelector((state) => state);
   return (
     <header style={{ backgroundColor: "lightblue" }}>
-      Balance: {state.balance.balance}
+      Balance: {state.balance}
     </header>
   );
 };

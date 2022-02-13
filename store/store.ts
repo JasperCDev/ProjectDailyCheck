@@ -28,16 +28,14 @@ export const todosSlice = createSlice({
   reducers: {},
 });
 
-const initialBalance = {
-  balance: 10000,
-};
+const initialBalance = 1000;
 
 const balanceSlice = createSlice({
   name: "balance",
   initialState: initialBalance,
   reducers: {
-    updateBalance: (state, action) => {
-      state += action.payload;
+    updateBalance: (bal, action) => {
+      bal += action.payload;
     },
   },
 });
