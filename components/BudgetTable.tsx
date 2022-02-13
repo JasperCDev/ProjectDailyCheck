@@ -1,12 +1,5 @@
 import React, { useMemo } from "react";
-import {
-  Cell,
-  Column,
-  ColumnGroup,
-  FooterProps,
-  Row,
-  useRowSelect,
-} from "react-table";
+import { Cell, FooterProps } from "react-table";
 import { useAppSelector } from "../store/store";
 import Table from "./Table/Table";
 
