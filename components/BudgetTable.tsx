@@ -36,12 +36,12 @@ const BudgetTable = (props: Props) => {
         },
         Footer: (col: FooterProps<typeof state.budget[0]>) => {
           return col.rows.reduce((sum, row) => {
-            console.log(row.values);
             return row.values["Amount"] + sum;
           }, 0);
         },
       },
     ];
+    // Interestingly, eslint sees that I'm using the state variable, but can't see that I'm only using it for TypeScript, so adding it as a dependancy wouldn't make any sense
   }, []);
 
   return <Table data={state.budget} columns={columns} />;
