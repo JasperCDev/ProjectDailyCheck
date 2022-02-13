@@ -41,7 +41,7 @@ const BudgetTable = (props: Props) => {
         },
       },
     ];
-    // Interestingly, eslint sees that I'm using the state variable, but can't see that I'm only using it for TypeScript, so adding it as a dependancy wouldn't make any sense
+    // Interestingly, eslint sees that I'm using the state variable, but can't see that I'm only using it for TypeScript, so adding it as a dependency wouldn't make any sense
   }, []);
 
   return <Table data={state.budget} columns={columns} />;
