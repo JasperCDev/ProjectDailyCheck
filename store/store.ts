@@ -26,6 +26,10 @@ const initialBalance = 10000;
 
 const initialBudget = [
   {
+    amount: 10000,
+    name: "Savings",
+  },
+  {
     amount: 4000,
     name: "Income",
   },
