@@ -11,7 +11,7 @@ const BudgetTable = (props: Props) => {
   const columns = useMemo(() => {
     return [
       {
-        header: "Name",
+        Header: "Name",
         id: "Name",
         accessor: (row: typeof state.budget[0]) => row.name,
         Cell: (cell: Cell<typeof state.budget[0]>) => {
@@ -21,7 +21,7 @@ const BudgetTable = (props: Props) => {
         Footer: () => "Total: ",
       },
       {
-        header: "Amount",
+        Header: "Amount",
         id: "Amount",
         accessor: (row: typeof state.budget[0]) => row.amount,
         Cell: (cell: Cell<typeof state.budget[0]>) => {
