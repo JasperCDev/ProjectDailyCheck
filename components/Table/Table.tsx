@@ -1,3 +1,6 @@
+{
+  /* eslint-disable react/jsx-key */
+}
 import React from "react";
 import {
   useTable,
@@ -50,10 +53,10 @@ function Table<T extends object>({ data, columns, bodyClassName }: Props<T>) {
   return (
     <table {...getTableProps()}>
       <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
-            {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()} key={column.id}></th>
+        {headerGroups.map((group) => (
+          <tr {...group.getHeaderGroupProps()}>
+            {group.headers.map((column) => (
+              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
             ))}
           </tr>
         ))}
@@ -62,13 +65,9 @@ function Table<T extends object>({ data, columns, bodyClassName }: Props<T>) {
         {rows.map((row) => {
           prepareRow(row);
           return (
-            <tr {...row.getRowProps()} key={row.id}>
+            <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                return (
-                  <td {...cell.getCellProps()} key={cell.value}>
-                    {cell.render("Cell")}
-                  </td>
-                );
+                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
               })}
             </tr>
           );
@@ -76,11 +75,9 @@ function Table<T extends object>({ data, columns, bodyClassName }: Props<T>) {
       </tbody>
       <tfoot>
         {footerGroups.map((group) => (
-          <tr {...group.getFooterGroupProps()} key={group.id}>
+          <tr {...group.getFooterGroupProps()}>
             {group.headers.map((column) => (
-              <td {...column.getFooterProps()} key={column.id}>
-                {column.render("Footer")}
-              </td>
+              <td {...column.getFooterProps()}>{column.render("Footer")}</td>
             ))}
           </tr>
         ))}
