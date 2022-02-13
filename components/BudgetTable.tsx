@@ -1,5 +1,12 @@
 import React, { useMemo } from "react";
-import { Cell, Row, useRowSelect } from "react-table";
+import {
+  Cell,
+  Column,
+  ColumnGroup,
+  FooterProps,
+  Row,
+  useRowSelect,
+} from "react-table";
 import { useAppSelector } from "../store/store";
 import Table from "./Table/Table";
 
@@ -26,6 +33,12 @@ const BudgetTable = (props: Props) => {
         Cell: (cell: Cell<typeof state.budget[0]>) => {
           const row = cell.row.original;
           return row.amount;
+        },
+        Footer: (col: FooterProps<typeof state.budget[0]>) => {
+          return col.rows.reduce((sum, row) => {
+            console.log(row.values);
+            return row.values["Amount"] + sum;
+          }, 0);
         },
       },
     ];

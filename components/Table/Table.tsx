@@ -38,8 +38,14 @@ function Table<T extends object>({ data, columns, bodyClassName }: Props<T>) {
     data,
   });
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    instance;
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+    footerGroups,
+  } = instance;
 
   return (
     <table {...getTableProps()}>
@@ -68,6 +74,17 @@ function Table<T extends object>({ data, columns, bodyClassName }: Props<T>) {
           );
         })}
       </tbody>
+      <tfoot>
+        {footerGroups.map((group) => (
+          <tr {...group.getFooterGroupProps()} key={group.id}>
+            {group.headers.map((column) => (
+              <td {...column.getFooterProps()} key={column.id}>
+                {column.render("Footer")}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tfoot>
     </table>
   );
 }
