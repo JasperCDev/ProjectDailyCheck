@@ -1,6 +1,3 @@
-{
-  /* eslint-disable react/jsx-key */
-}
 import React from "react";
 import {
   useTable,
@@ -53,34 +50,56 @@ function Table<T extends object>({ data, columns, bodyClassName }: Props<T>) {
   return (
     <table {...getTableProps()}>
       <thead>
-        {headerGroups.map((group) => (
-          <tr {...group.getHeaderGroupProps()}>
-            {group.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-            ))}
-          </tr>
-        ))}
+        {headerGroups.map((group) => {
+          const { key, ...rest } = group.getHeaderGroupProps();
+          return (
+            <tr key={key} {...rest}>
+              {group.headers.map((column) => {
+                const { key, ...rest } = column.getHeaderProps();
+                return (
+                  <th key={key} {...rest}>
+                    {column.render("Header")}
+                  </th>
+                );
+              })}
+            </tr>
+          );
+        })}
       </thead>
       <tbody {...getTableBodyProps()}>
         {rows.map((row) => {
           prepareRow(row);
+          const { key, ...rest } = row.getRowProps();
           return (
-            <tr {...row.getRowProps()}>
+            <tr key={key} {...rest}>
               {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+                const { key, ...rest } = cell.getCellProps();
+                return (
+                  <td key={key} {...rest}>
+                    {cell.render("Cell")}
+                  </td>
+                );
               })}
             </tr>
           );
         })}
       </tbody>
       <tfoot>
-        {footerGroups.map((group) => (
-          <tr {...group.getFooterGroupProps()}>
-            {group.headers.map((column) => (
-              <td {...column.getFooterProps()}>{column.render("Footer")}</td>
-            ))}
-          </tr>
-        ))}
+        {footerGroups.map((group) => {
+          const { key, ...rest } = group.getFooterGroupProps();
+          return (
+            <tr key={key} {...rest}>
+              {group.headers.map((column) => {
+                const { key, ...rest } = column.getFooterProps();
+                return (
+                  <td key={key} {...rest}>
+                    {column.render("Footer")}
+                  </td>
+                );
+              })}
+            </tr>
+          );
+        })}
       </tfoot>
     </table>
   );
